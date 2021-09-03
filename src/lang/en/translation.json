@@ -1,0 +1,80 @@
+{
+    "navbar":{
+        "link1":"Dashboard",
+        "link2":"Create Task",
+        "link3":"Logout",
+        "link4":"Login"
+    },
+    "SignUp":{
+        "status":"Step",
+        "page1":{
+            "header":"Create A Team Account",
+            "label1":"Team Name",
+            "label2":"Team Members",
+            "pholder":"name",
+            "nextLink":"Next Step"
+        },
+        "page2":{
+            "header":"Login Information",
+            "prevLink":"Prev Step",
+            "nextLink":"Create Account"
+        }
+    },
+    "Login":{
+        "header":"Login",
+        "label1":"Email",
+        "error1":"*Invalid Email Address",
+        "error2":"*Invalid Password, Password must be alteast 6 characters",
+        "label2":"Password",
+        "btn":"Login",
+        "link":"Create a Team account"
+    },
+    "main":{
+        "header":"Grab a Task",
+        "taskStatus":{
+            "title":"Status:",
+            "done":"Done",
+            "notDone":"Not Done",
+            "all":"All"
+        },
+        "searchBar":{
+            "pholder":"Quick Search",
+            "advSearch":{
+                "header":"Advanced Search",
+                "sortLabel":"Sort:",
+                "sortOpt0":"Sort By:",
+                "sortOpt1":"Title",
+                "sortOpt2":"Assignee",
+                "sortOpt3":"Due date and time",
+                "filterHeader":"Filters:",
+                "filterLabel1":"Assigned To:"
+               
+               
+            }
+        },
+        "taskDetails":{
+            "stepLabel":"Steps:"
+        }
+
+    },
+    "create":{
+        "header":"Create Task",
+        "label1":"Title",
+        "label2":"Steps",
+        "label3":"Due Date",
+        "label4":"Due Time",
+        "label5":"Assign to:",
+        "label6":"Select Team Member",
+        "btn":"Create",
+        "taskAddedMsg":"New task added."
+    },
+    "notFound":{
+        "msg1":"We can’t seem to find the page you’re looking for.",
+        "msg2":"Please try the links in the navigation bar. "
+    },
+    "Loading":"Loading...",
+    "confirmMsg":"This action is irreversible, are you sure you want to delete this task?",
+    "markDoneMsg":"marked as done.",
+    "deletedMsg":"deleted."
+
+}

@@ -1,0 +1,54 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "teamName": "Avengers",
+      "teamMembers": [
+        "Steve",
+        "Tony",
+        "Natasha",
+        "Bruce"
+      ],
+      "email": "onePiece@Sunny.com",
+      "password": "1234"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "Task1",
+      "assignedTo": 1,
+      "isDone": true,
+      "date": "2021-07-24",
+      "time": "15:30",
+      "steps": [
+        "Step 1",
+        "Step 2"
+      ],
+      "id": 0
+    },
+    {
+      "title": "Task3",
+      "assignedTo": 1,
+      "isDone": true,
+      "date": "2021-07-24",
+      "time": "20:30",
+      "steps": [
+        "Step 1",
+        "Step 2"
+      ],
+      "id": 2
+    },
+    {
+      "title": "Task2",
+      "assignedTo": 0,
+      "isDone": true,
+      "date": "2021-07-20",
+      "time": "20:44",
+      "steps": [
+        "etape 1",
+        "etape 2"
+      ],
+      "id": 5
+    }
+  ]
+}
