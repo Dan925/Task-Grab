@@ -1,5 +1,6 @@
 
-## React App : Task-Grab
+## Task-Grab
+![React](https://img.shields.io/badge/-React-black?style=for-the-badge&logo=react)
 
 ![](./screenshots/img1.png)
 ![](./screenshots/img2.png)
