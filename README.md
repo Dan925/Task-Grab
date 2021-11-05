@@ -1,7 +1,10 @@
 
 ## Task-Grab
 ![React](https://img.shields.io/badge/-React-black?style=for-the-badge&logo=react)
+<<<<<<< HEAD
 ![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green)
+=======
+>>>>>>> 6403dbf90be1aaf635077e4062e56d2c358fae7b
 
 ![](./assets/img1.png)
 ![](./assets/img2.png)
@@ -12,15 +15,15 @@
 
 ### Frontend
 
-#### `npm start`
+Runs the json server data watcher 
 
-Runs the react app in development mode.
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `npm start`
 
-### Dependencies
+Runs the app in development mode.
+
+
+### Extra Dependencies
 
 - React-Router-dom
 - React-icons
