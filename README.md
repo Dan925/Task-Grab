@@ -17,7 +17,7 @@ Runs the json server data watcher
 
 ### `npm start`
 
-Runs the app in development mode.
+Runs the app in development mode on port 3000.
 
 
 ### Extra Dependencies
@@ -35,7 +35,7 @@ Runs the app in development mode.
 
 #### `python manage.py runserver`
 
-Runs Django backend in development mode.
+- Runs Django backend in development mode on port 8000.
 
 ### Dependencies
  
