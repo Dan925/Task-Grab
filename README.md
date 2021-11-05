@@ -1,10 +1,7 @@
 
 ## Task-Grab
 ![React](https://img.shields.io/badge/-React-black?style=for-the-badge&logo=react)
-<<<<<<< HEAD
 ![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green)
-=======
->>>>>>> 6403dbf90be1aaf635077e4062e56d2c358fae7b
 
 ![](./assets/img1.png)
 ![](./assets/img2.png)
