@@ -12,12 +12,9 @@
 
 ### Frontend
 
-Runs the json server data watcher 
+#### `npm start`
 
-
-### `npm start`
-
-Runs the app in development mode on port 3000.
+- Runs the app in development mode on port 3000.
 
 
 ### Extra Dependencies
