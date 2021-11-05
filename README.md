@@ -1,23 +1,20 @@
 
-## React App : Task-Grab
+## Task-Grab
+![React](https://img.shields.io/badge/-React-black?style=for-the-badge&logo=react)
+![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green)
 
-![](./screenshots/img1.png)
-![](./screenshots/img2.png)
-![](./screenshots/img3.png)
-![](./screenshots/img4.png)
+![](./assets/img1.png)
+![](./assets/img2.png)
+![](./assets/img3.png)
+![](./assets/img4.png)
 
 ## Scripts
 
-In the project directory, you can run:
-### `npm run jsonServer`
+### Frontend
 
-Runs the json server data watcher where I store dummy data for the App
-Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
+#### `npm start`
 
-
-### `npm start`
-
-Runs the app in development mode.\
+Runs the react app in development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
@@ -29,4 +26,17 @@ You will also see any lint errors in the console.
 - React-icons
 - React-i18next
 - React-hot-toaster
-- Json-server
+
+### Backend
+
+#### `pip install -r requirements.txt`
+
+- Install all dependencies for backend
+
+#### `python manage.py runserver`
+
+Runs Django backend in development mode.
+
+### Dependencies
+ 
+- Listed in requirements.txt file in backend directory

@@ -1,0 +1,4 @@
+Hello,
+You have been added to {{group_name}} in TaskGrab. 
+Please create an account or login your new group is waiting for you!
+  
