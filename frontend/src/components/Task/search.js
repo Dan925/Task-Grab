@@ -161,15 +161,15 @@ const SearchBar = (props) => {
     }
 
     const handleAssigneeFilter = (e) =>{
-        let val = e.target.value;
-        setAssigneeFilter(val);
+        let assignee = e.target.value;
+        setAssigneeFilter(assignee);
         let t = tasksCp.map(task=>({...task}));
             
-        if (val === -1)
-            val = null;
+        if (assignee === -1)
+            assignee = null;
         t = t.filter(task=>{
             if (task.group===watchTeam)
-                return task.assignee === val;
+                return task.assignee === assignee;
             return 1;
         })
        setTasks(t);
@@ -182,7 +182,7 @@ const SearchBar = (props) => {
         setSortValue();
         setStatusFilter();
         setAssigneeFilter();
-        console.log(statusFilter);
+       
         
     }
     return (
@@ -243,7 +243,7 @@ const SearchBar = (props) => {
                         <FormControl component="fieldset" >
                             <FormLabel component="legend">Filter By Status:</FormLabel>
                             <RadioGroup 
-                                value = {statusFilter}
+                                value = {statusFilter||null}
                                 onChange={handleStatusFilterTasks}
                             
                             row

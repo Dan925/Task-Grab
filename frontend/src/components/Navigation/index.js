@@ -184,12 +184,14 @@ export  const Navbar = () => {
                                     {!loggedIn&& <NavLink  activeClassName="active"  to="/login">{t('navbar.link4')}</NavLink>
                                     }
                             </ListItem>
-                            <ListItem>
+
+                            {/*TO-DO: complete translation
+                             <ListItem>
                                 <select name="lang" id="lang-select" className="custom-select" value={lang} onChange={handleLangChange}>
                                     <option value="en">English</option>
                                     <option value="fr">Français</option>
                                 </select>
-                            </ListItem>
+                            </ListItem> */}
                         </List>
                         
                     
@@ -211,10 +213,11 @@ export  const Navbar = () => {
                 {loggedIn&&<NavLink  activeClassName="active"  to="/create-group">Create Group</NavLink>}
                 {loggedIn&&<NavLink  activeClassName="active"  to="/invite-user">Invite User</NavLink>}
                 {!loggedIn&&<NavLink  activeClassName="active"  to="/login">{t('navbar.link4')}</NavLink>}
+                {/*TO-DO: complete translation 
                 <select name="lang" id="lang-select" className="custom-select" value={lang} onChange={handleLangChange}>
                     <option value="en">English</option>
                     <option value="fr">Français</option>
-                </select>
+                </select> */}
 
                 </div>
 
