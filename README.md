@@ -9,32 +9,29 @@
 ![](./assets/img4.png)
 ![](./assets/img5.png)
 
-## Scripts
+## CMDS
 
 ### Frontend
 
+#### `npm install`
+
+- Install all frontend dependecies listed in package.json
+
 #### `npm start`
 
-- Runs the app in development mode on port 3000.
+- Runs React frontend in development mode on port 3000
 
-
-### Extra Dependencies
-
-- React-Router-dom
-- React-icons
-- React-i18next
-- React-hot-toaster
 
 ### Backend
 
 #### `pip install -r requirements.txt`
 
-- Install all dependencies for backend
+- Install all dependencies for backend from requirements.txt file
 
 #### `python manage.py runserver`
 
-- Runs Django backend in development mode on port 8000.
+- Runs Django backend in development mode on port 8000
 
-### Dependencies
- 
-- Listed in requirements.txt file in backend directory
+
+
+
