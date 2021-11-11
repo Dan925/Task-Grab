@@ -20,4 +20,7 @@
 - load db data
 `python manage.py loaddata db.json`
 
-
+# Data restore from postgres backup
+1. `pg_dump -Ft <backupDb_name> > backup.tar`
+2. Drop old database and recreate old database
+3. `pg_restore -d <targetDB_name> backup.tar`
