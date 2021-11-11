@@ -64,13 +64,13 @@ const TaskList = (props) => {
      
     },[iniTasks]);
     const handleMarkAsDone = async (task) =>{
-      dispatch({type:'MARK_DONE',payload:task.id});
-        try{
-            const res = await axiosInstance.patch(`tasks/${task.id}/`,{is_done:true});
-
-            if(res && res.status===200){
-                console.log("Task '"+task.title+"' marked as done");
-                return true;
+      try{
+        const res = await axiosInstance.patch(`tasks/${task.id}/`,{is_done:true});
+        
+        if(res && res.status===200){
+              dispatch({type:'MARK_DONE',payload:task.id});
+              console.log("Task '"+task.title+"' marked as done");
+              return true;
             }else{
                 console.log("ERROR: Marking as Done");
                 return false;
@@ -86,10 +86,10 @@ const TaskList = (props) => {
       const conf=  window.confirm(t('confirmMsg'));
       
         if(conf){            
-            dispatch({type:'DELETE_TASK',payload:id});
-            try{
-                const res = axiosInstance.delete(`tasks/${id}/`);
-                if(res && res.status === 204){
+          try{
+            const res = axiosInstance.delete(`tasks/${id}/`);
+            if(res && res.status === 204){
+                    dispatch({type:'DELETE_TASK',payload:id});
                     console.log("Task deleted");
                     return true;
                 }else{
