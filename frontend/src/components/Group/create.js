@@ -1,9 +1,7 @@
-import React,{useContext,useState} from 'react'
+import React,{useState} from 'react'
 import useFetch from '../../hooks/useFetch'
 import { useHistory } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { LoginContext } from '../../context/LoginContext';
-import Login from '../Login';
 import toast from 'react-hot-toast';
 
 import {Box,TextField,Select,MenuItem, FormControl,InputLabel, FormHelperText, Chip} from '@mui/material';
@@ -19,7 +17,6 @@ const CreateGroup = () => {
 const {t} = useTranslation();
 const {data} = useFetch('users/');
 const history = useHistory();
-const {loggedIn} = useContext(LoginContext);
 
 
 const [name,setName] = useState("");
@@ -76,7 +73,7 @@ const handleChange = (event) => {
 
     return (
         <div >
-        {loggedIn&&    
+       
                <Form>
                      <h2>Create Group</h2>
                      
@@ -121,9 +118,9 @@ const handleChange = (event) => {
                 
                 </Form>
                        
-        }
+        
 
-        {!loggedIn&& <Login/>}
+       
        
         
     </div>

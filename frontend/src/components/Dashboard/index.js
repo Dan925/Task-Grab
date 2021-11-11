@@ -1,26 +1,25 @@
-import React,{useContext} from 'react'
+import React from 'react'
 import useFetch from '../../hooks/useFetch'
 import Tasks from '../Task/index';
 
-import { LoginContext } from '../../context/LoginContext'
-import Login from '../Login'
+
 const Dashboard = () => {
-    const {loggedIn} = useContext(LoginContext);
+  
     const {data, isLoading,error} = useFetch("tasks/");
    
   
     return (
         <div className="home-content">
             
-            {!loggedIn&& <Login/>}
-             {error && loggedIn &&
+         
+             {error &&
                  <div>{error}</div>
              }
 
-            {isLoading && loggedIn &&
+            {isLoading &&
                  <div>Loading.... </div>
             }
-            {data && loggedIn &&
+            {data && 
                <Tasks list = {data}/>
             }
 

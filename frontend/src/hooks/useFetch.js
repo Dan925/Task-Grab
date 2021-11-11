@@ -10,7 +10,7 @@ const useFetch = (url)=> {
 
     
 
-    //useEffect hook, run at every render, dependency array input for specifying when to run the function on state change for ex
+    //useEffect hook, run at every render, dependency array input for specifying when to run the function on state.isLoggedIn change for ex
     useEffect(()=>{
     
       

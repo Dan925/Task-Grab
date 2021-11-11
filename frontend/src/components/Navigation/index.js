@@ -82,7 +82,7 @@ function stringToColor(string) {
 
 export  const Navbar = () => {
     const {t,i18n} = useTranslation();
-    const {loggedIn,setLoggedIn} = useContext(LoginContext);
+    const {state,dispatch} = useContext(LoginContext);
     const [lang,setLang] = useState ("def");
     const [openDrawer,setOpenDrawer] = useState(false);
     const [mobileView, setMobileView] = useState(false);
@@ -90,7 +90,7 @@ export  const Navbar = () => {
     const history = useHistory()
     const classes = useStyles();
     const ref = useRef() 
-    const user = LocalStorageService.getUser();
+    const user = state.user;
     const handleLangChange = (e)=>{
         const l = e.target.value;
         setLang(l);
@@ -101,7 +101,7 @@ export  const Navbar = () => {
     const handleLogout = ()=>{
         axiosInstance.post("users/logout/",{refresh:LocalStorageService.getRefreshToken()});
         axiosInstance.defaults.headers["Authorization"] = null;
-        setLoggedIn(false);
+        dispatch({type:'LOGOUT'});
         LocalStorageService.clearStorage();
         history.push('/')
     }
@@ -159,29 +159,29 @@ export  const Navbar = () => {
                     </Box>
                         
                         <List sx={{display:'flex', height:'100%', flexDirection:'column', justifyContent:'baseline', marginTop:'3rem',padding:'2rem', gap:'2rem'}}>
-                           {loggedIn&&
+                           {state.isLoggedIn&&
                             <ListItem >
                                 <NavLink activeClassName="active" to="/dashboard">{t('navbar.link1')}</NavLink>
                             </ListItem>
                             }
-                            {loggedIn&&
+                            {state.isLoggedIn&&
                             <ListItem>
                                <NavLink  activeClassName="active"  to="/create-task">{t('navbar.link2')}</NavLink>
                             </ListItem> 
                             }
-                           { loggedIn&&
+                           { state.isLoggedIn&&
                            <ListItem>
                                  <NavLink  activeClassName="active"  to="/create-group">Create Group</NavLink>
                             </ListItem>
                             }
-                            { loggedIn&&
+                            { state.isLoggedIn&&
                             <ListItem>
                                 <NavLink  activeClassName="active"  to="/invite-user">Invite User</NavLink>
                             </ListItem>
                             }
 
                             <ListItem>
-                                    {!loggedIn&& <NavLink  activeClassName="active"  to="/login">{t('navbar.link4')}</NavLink>
+                                    {!state.isLoggedIn&& <NavLink  activeClassName="active"  to="/login">{t('navbar.link4')}</NavLink>
                                     }
                             </ListItem>
 
@@ -207,12 +207,12 @@ export  const Navbar = () => {
             {!mobileView&&
                 <div className="nav-links">
                     
-                   {loggedIn&& <NavLink activeClassName="active" to="/dashboard">{t('navbar.link1')}</NavLink>}
+                   {state.isLoggedIn&& <NavLink activeClassName="active" to="/dashboard">{t('navbar.link1')}</NavLink>}
                     
-                {loggedIn&&<NavLink  activeClassName="active"  to="/create-task">{t('navbar.link2')}</NavLink>}
-                {loggedIn&&<NavLink  activeClassName="active"  to="/create-group">Create Group</NavLink>}
-                {loggedIn&&<NavLink  activeClassName="active"  to="/invite-user">Invite User</NavLink>}
-                {!loggedIn&&<NavLink  activeClassName="active"  to="/login">{t('navbar.link4')}</NavLink>}
+                {state.isLoggedIn&&<NavLink  activeClassName="active"  to="/create-task">{t('navbar.link2')}</NavLink>}
+                {state.isLoggedIn&&<NavLink  activeClassName="active"  to="/create-group">Create Group</NavLink>}
+                {state.isLoggedIn&&<NavLink  activeClassName="active"  to="/invite-user">Invite User</NavLink>}
+                {!state.isLoggedIn&&<NavLink  activeClassName="active"  to="/login">{t('navbar.link4')}</NavLink>}
                 {/*TO-DO: complete translation 
                 <select name="lang" id="lang-select" className="custom-select" value={lang} onChange={handleLangChange}>
                     <option value="en">English</option>

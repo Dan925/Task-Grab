@@ -1,7 +1,5 @@
-import React,{useContext} from 'react'
+import React from 'react'
 import Form from '../Common/Form';
-import { LoginContext } from '../../context/LoginContext';
-import Login from '../Login';
 import CustomBtn from '../Common/Button';
 import { useForm,Controller } from 'react-hook-form';
 import axiosInstance from '../../services/Axios';
@@ -11,7 +9,7 @@ import Utils from '../../utils';
 import toast from 'react-hot-toast';
 import { useHistory } from 'react-router';
 function InviteUser() {
-    const {loggedIn} = useContext(LoginContext);
+    
     const {handleSubmit, getValues,control, setError,formState:{errors}} = useForm();
     const {data} = useFetch("users/groups/");
     const history = useHistory();
@@ -47,7 +45,7 @@ function InviteUser() {
     }
     return (
         <div>
-            {loggedIn&&
+            
                 <Form>
                     <h2>Invite User</h2>
                     <Controller
@@ -95,8 +93,8 @@ function InviteUser() {
 
                     <CustomBtn size="large" variant="contained" onClick={handleSubmit(onSubmit)}>Invite User</CustomBtn>
                 </Form>
-            }
-            {!loggedIn&& <Login/>}
+            
+    
        
             
         </div>

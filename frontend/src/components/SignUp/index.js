@@ -1,9 +1,11 @@
-import React, {useState} from 'react'
+import React, {useContext,useState} from 'react'
 import { useHistory } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import Utils from '../../utils';
 import axiosInstance from '../../services/Axios';
 import CustomBtn from '../Common/Button';
+import { LoginContext } from '../../context/LoginContext';
+import { Redirect } from 'react-router';
 export default function SignUp() {
     const [values,setValues] = useState({firstName: "",lastName:"", username:"",email:"",password:"",password2:""});
     const [matchError, setMatchError] = useState(false);
@@ -12,6 +14,7 @@ export default function SignUp() {
     const [validPassword, setValidPassword] = useState(true)
     const [isEmpty,setEmpty] = useState(false);
     const history = useHistory();
+    const {state} = useContext(LoginContext);
 
     const {t} = useTranslation();
 
@@ -74,8 +77,8 @@ export default function SignUp() {
     }
     return (
         <div>
-
-   
+            {state.isLoggedIn?<Redirect to="dashboard/"/>:
+            
                <form  className="custom-form" method="POST">
                     <h2>Create your account</h2>
                     <label> Username </label>
@@ -99,6 +102,9 @@ export default function SignUp() {
                            
                 </form>
              
+            }
+
+   
              
              
            

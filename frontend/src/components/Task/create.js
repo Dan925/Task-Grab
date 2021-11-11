@@ -1,10 +1,10 @@
-import React,{useContext} from 'react';
+import React from 'react';
 import {useForm,Controller, useWatch} from 'react-hook-form';
 import useFetch from '../../hooks/useFetch'
 import { useHistory } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { LoginContext } from '../../context/LoginContext';
-import Login from '../Login';
+
+
 import toast from 'react-hot-toast';
 
 import {TextField, Select,MenuItem, FormControl,InputLabel, FormHelperText} from '@mui/material';
@@ -18,7 +18,7 @@ export default function CreateTask() {
    
     const {data} = useFetch("users/groups/");
     const history = useHistory();
-    const {loggedIn} = useContext(LoginContext);
+    
 
     
     const { handleSubmit, control, getValues,setError, formState:{errors}} = useForm();
@@ -79,7 +79,7 @@ export default function CreateTask() {
     return (
         <div >
            
-            {loggedIn&&
+     
                     
                     <Form>
                          <h2>{t('create.header')}</h2>
@@ -179,10 +179,8 @@ export default function CreateTask() {
                 
                     </Form>
                            
-            }
+            
 
-            {!loggedIn&& <Login/>}
-           
             
         </div>
     )

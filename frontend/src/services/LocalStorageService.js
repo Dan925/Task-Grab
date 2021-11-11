@@ -2,10 +2,11 @@ import jwt_decode from "jwt-decode"
 const LocalStorageService = (function(){
     const setTokens = (tokens)=>{
         const payload = jwt_decode(tokens.access);
-        const user = {id:payload.user_id,first_name:payload.first_name,last_name:payload.last_name,email:payload.email}
+        const user = {first_name:payload.first_name,last_name:payload.last_name,email:payload.email}
         localStorage.setItem('user',JSON.stringify(user));
         localStorage.setItem('access_token',tokens.access);
         localStorage.setItem('refresh_token',tokens.refresh);
+       
     }
 
     const getAccessToken = ()=>{

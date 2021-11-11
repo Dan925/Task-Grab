@@ -5,9 +5,8 @@ import { useTranslation } from 'react-i18next';
 import axiosInstance from '../../services/Axios';
 import LocalStorageService from '../../services/LocalStorageService';
 import Utils from '../../utils';
-import Dashboard from '../Dashboard';
 import CustomBtn from '../Common/Button';
-
+import { Redirect } from 'react-router';
 
 export default function Login() {
     const {t} = useTranslation();
@@ -19,7 +18,7 @@ export default function Login() {
    const [errors,setErrors]= useState(new Array(2).fill(false));
     
    const [wrongCredentials,setWrongCredentials] = useState(false)
-    const {loggedIn,setLoggedIn} = useContext(LoginContext);
+    const {state,dispatch} = useContext(LoginContext);
     const history = useHistory();
 
 
@@ -56,7 +55,7 @@ export default function Login() {
                     setWrongCredentials(false);
                     LocalStorageService.setTokens(res.data);
                     axiosInstance.defaults.headers['Authorization']= 'JWT '+res.data.access;
-                    setLoggedIn(true);
+                    dispatch({type:'LOGIN',payload:LocalStorageService.getUser()});
                     history.push("/dashboard");
                 }
             })
@@ -68,6 +67,7 @@ export default function Login() {
 
 
 
+
             
         }
         
@@ -75,7 +75,7 @@ export default function Login() {
     }
     return (
         <div>
-              {loggedIn? <Dashboard/>:
+              {state.isLoggedIn?<Redirect to="/dashboard"/>:
               
                 <form  className="custom-form">
                     <h2>{t('Login.header')}</h2>
