@@ -4,7 +4,6 @@ import { Route,Redirect } from 'react-router';
 
 const PrivateRoute = ({path,component}) => {
     const {state} = useContext(LoginContext);
-    console.log(state);
     return (
         state.isLoggedIn?
         <Route exact path={path} component={component}/>:<Redirect to='/login'/>
