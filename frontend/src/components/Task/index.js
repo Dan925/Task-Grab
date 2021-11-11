@@ -10,7 +10,7 @@ import { FaPlusCircle} from 'react-icons/fa';
 import SearchBar from './search';
 import useFetch from '../../hooks/useFetch';
 import { useTranslation } from 'react-i18next';
-const Tasks = ({list}) => {
+const Tasks = () => {
     
 
 
@@ -36,7 +36,7 @@ const Tasks = ({list}) => {
             }
             {data&&
           
-            <SearchBar tasks={list} teams={data}/>
+            <SearchBar  teams={data}/>
             }
            
             

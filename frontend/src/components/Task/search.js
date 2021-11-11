@@ -1,5 +1,5 @@
-import React,{useState} from 'react'
-
+import React,{useState,useContext} from 'react'
+import { TaskContext } from '../../context/TaskContext';
 
 import { useTranslation } from 'react-i18next';
 
@@ -47,10 +47,11 @@ const useStyles = makeStyles((theme)=>({
 
 
 const SearchBar = (props) => {
+    const {state} = useContext(TaskContext);
     const classes = useStyles();
-    const tasksCp = props.tasks;
+    const tasksCp = state.tasks;
     const teamsCp = props.teams;
-    const [tasks,setTasks]= useState(props.tasks);
+    const [tasks,setTasks]= useState(state.tasks);
     const [teams,setTeams] = useState(props.teams);
     const SORT_BY  = {"TITLE":0,"ASSIGNEE":1,};
     const FILTER_BY = {"STATUS_DONE":'0',"STATUS_NOT_DONE":'1',"ASSIGNEE":'2'};

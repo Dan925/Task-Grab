@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useContext,useEffect} from 'react'
 import { useTranslation } from 'react-i18next';
 
 
@@ -8,7 +8,7 @@ import {Box,Tabs, Tab} from '@mui/material';
 
 import TaskDetails from './detail';
 import axiosInstance from '../../services/Axios';
-
+import { TaskContext } from '../../context/TaskContext';
 
 
 function TabPanel(props) {
@@ -53,7 +53,7 @@ const TaskList = (props) => {
     const teams = props.teams;
     const [value, setValue] = useState(0);
     const [tasks, setTasks] = useState(iniTasks);
-
+    const {dispatch} = useContext(TaskContext);
     const handleChange = (event, newValue) => {
       setValue(newValue);
     };
@@ -64,19 +64,7 @@ const TaskList = (props) => {
      
     },[iniTasks]);
     const handleMarkAsDone = async (task) =>{
-        
-        setTasks(tasks.map(elem => {
-            if(elem.id===task.id){
-                let v = elem;
-                v.is_done=true;
-                return v
-            }
-            return elem;
-                
-        }));
-
-        
-
+      dispatch({type:'MARK_DONE',payload:task.id});
         try{
             const res = await axiosInstance.patch(`tasks/${task.id}/`,{is_done:true});
 
@@ -97,9 +85,8 @@ const TaskList = (props) => {
     const handleDelete = async (id) =>{
       const conf=  window.confirm(t('confirmMsg'));
       
-        if(conf){
-            setTasks(tasks.filter(elem=>elem.id!==id ));
-
+        if(conf){            
+            dispatch({type:'DELETE_TASK',payload:id});
             try{
                 const res = axiosInstance.delete(`tasks/${id}/`);
                 if(res && res.status === 204){

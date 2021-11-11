@@ -10,7 +10,7 @@ import CreateGroup from './components/Group/create';
 import InviteUser from './components/Group/invite';
 import PrivateRoute from './components/Common/PrivateRoute';
 import LoginContextProvider from './context/LoginContext';
-
+import TaskContextProvider from './context/TaskContext';
 const theme = createTheme({
   palette:{
     primary:{
@@ -30,22 +30,24 @@ function App() {
     <Router>  
       <div className="App">
           <LoginContextProvider >
-            <ThemeProvider theme={theme}>
-              <Navbar/>
-              <div className="content">
-                <Switch>
-                  <Route exact path='/' component={Login}/>
-                  <PrivateRoute path='/dashboard' component={Dashboard}/>
-                  <Route exact path='/signup' component={SignUp}/>
-                  <Route exact path='/login' component={Login}/>          
-                  <PrivateRoute path='/create-task' component={CreateTask}/>
-                  <PrivateRoute path='/create-group' component={CreateGroup}/>
-                  <PrivateRoute path='/invite-user' component={InviteUser}/>
-                  <Route component={NotFound}/>
-                </Switch>
-              </div>
+            <TaskContextProvider>
+              <ThemeProvider theme={theme}>
+                <Navbar/>
+                <div className="content">
+                  <Switch>
+                    <Route exact path='/' component={Login}/>
+                    <PrivateRoute path='/dashboard' component={Dashboard}/>
+                    <Route exact path='/signup' component={SignUp}/>
+                    <Route exact path='/login' component={Login}/>          
+                    <PrivateRoute path='/create-task' component={CreateTask}/>
+                    <PrivateRoute path='/create-group' component={CreateGroup}/>
+                    <PrivateRoute path='/invite-user' component={InviteUser}/>
+                    <Route component={NotFound}/>
+                  </Switch>
+                </div>
 
-            </ThemeProvider>
+              </ThemeProvider>
+            </TaskContextProvider> 
           </LoginContextProvider>
 
       </div>

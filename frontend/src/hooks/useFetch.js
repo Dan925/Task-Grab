@@ -8,9 +8,7 @@ const useFetch = (url)=> {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    
 
-    //useEffect hook, run at every render, dependency array input for specifying when to run the function on state.isLoggedIn change for ex
     useEffect(()=>{
     
       

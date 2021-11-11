@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import {useForm,Controller} from 'react-hook-form'
 import { useTranslation } from 'react-i18next';
 import toast,{ Toaster } from 'react-hot-toast';
@@ -25,7 +25,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 
 import Typography from '@mui/material/Typography';
 import axiosInstance from '../../services/Axios'
-
+import { TaskContext } from '../../context/TaskContext';
 const TaskDetails = (props) => {
     const [expanded,setIsExpanded] = useState(false);
     const [task,setTask] = useState(props.task);
@@ -36,7 +36,8 @@ const TaskDetails = (props) => {
   
     const [editMode,setEditMode] = useState(false);
     const {t} = useTranslation();
-
+    
+    const {dispatch} = useContext(TaskContext);
     const handleTaskAccordion = ()=>{
         if(!editMode)
             setIsExpanded(!expanded)
@@ -72,10 +73,10 @@ const TaskDetails = (props) => {
             try{
                 const res = await axiosInstance.put('tasks/'+task.id+'/',newT);
                 if(res && res.status === 200){
+                    dispatch({type:'UPDATE_TASK',payload:{id:task.id,newT}});
                     setTask({...task,...newT});
                     return true;
-                }
-                
+                }       
                 return false;
             }catch(e){
                 console.log(e.message);

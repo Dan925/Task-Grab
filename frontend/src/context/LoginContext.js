@@ -1,5 +1,6 @@
 import React, { createContext,useReducer } from "react";
 import LocalStorageService from "../services/LocalStorageService";
+
 const currUser = LocalStorageService.getUser()
 const initialState = {
     isLoggedIn:currUser?true:false,
@@ -16,7 +17,6 @@ const loginReducer = (state,action)=>{
             return state;
     }
 }
-
 export const LoginContext = createContext(initialState);
 
 const LoginContextProvider = ({children}) => {
