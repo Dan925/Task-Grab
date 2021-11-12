@@ -1,43 +1,31 @@
-import {useState,useEffect} from 'react';
-import axiosInstance from '../services/Axios';
+import { useState, useEffect } from "react";
+import axiosInstance from "../services/Axios";
 
 //custom hook
-const useFetch = (url)=> {
+const useFetch = (url) => {
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    const [data, setData] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-
-    useEffect(()=>{
-    
-      
-      axiosInstance.get(url)
-      .then((res)=>{
-        if(!res || res.status !== 200){
-          throw Error('could not fetch resource');
-        }else{
+  useEffect(() => {
+    axiosInstance
+      .get(url)
+      .then((res) => {
+        if (!res || res.status !== 200) {
+          throw Error("could not fetch resource");
+        } else {
           setData(res.data);
           setError(null);
           setIsLoading(false);
         }
-
-
-      }).catch(err => {
-      
-          setIsLoading(false);
-          setError(err.message);
-        
-        
-
-       
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setError(err.message);
       });
-      
+  }, [url]);
 
-
-    },[url]);
-
-    return { isLoading, data, error, setData }
-}
+  return { isLoading, data, error, setData };
+};
 
 export default useFetch;
