@@ -1,13 +1,10 @@
-import React, { useState, useContext, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import React, { useState } from "react";
 
+import { Box, Tab, Tabs } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
-import { Box, Tabs, Tab } from "@mui/material";
 
 import TaskDetails from "./detail";
-import axiosInstance from "../../services/Axios";
-import { TaskContext } from "../../context/TaskContext";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -42,70 +39,17 @@ function a11yProps(index) {
   };
 }
 
-const TaskList = (props) => {
-  const { t, i18n } = useTranslation();
+const TaskList = ({ tasks, teams, handleDelete, handleMarkAsDone }) => {
+  const [tabIndex, setTabIndex] = useState(0);
 
-  const iniTasks = props.tasks;
-  const teams = props.teams;
-  const [value, setValue] = useState(0);
-  const [tasks, setTasks] = useState(iniTasks);
-  const { dispatch } = useContext(TaskContext);
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  useEffect(() => {
-    //reset tasks for search if tasks prop changes
-    setTasks(iniTasks);
-  }, [iniTasks]);
-  const handleMarkAsDone = async (task) => {
-    try {
-      const res = await axiosInstance.patch(`tasks/${task.id}/`, {
-        is_done: true,
-      });
-
-      if (res && res.status === 200) {
-        dispatch({ type: "MARK_DONE", payload: task.id });
-        console.log("Task '" + task.title + "' marked as done");
-        return true;
-      } else {
-        console.log("ERROR: Marking as Done");
-        return false;
-      }
-    } catch (e) {
-      console.log("Exception: ", e.message);
-      return false;
-    }
-  };
-
-  const handleDelete = async (id) => {
-    const conf = window.confirm(t("confirmMsg"));
-
-    if (conf) {
-      try {
-        const res = axiosInstance.delete(`tasks/${id}/`);
-        if (res && res.status === 204) {
-          dispatch({ type: "DELETE_TASK", payload: id });
-          console.log("Task deleted");
-          return true;
-        } else {
-          console.log("ERROR: Deleting Task");
-          return false;
-        }
-      } catch (e) {
-        console.log("Exception: ", e.message);
-        return false;
-      }
-    }
-    return false;
-  };
+  const handleTabChange = (event, newValue) => setTabIndex(newValue);
 
   return (
     <div>
       <Box sx={{ width: "100%", borderBottom: 1, borderColor: "divider" }}>
         <Tabs
-          value={value}
-          onChange={handleChange}
+          value={tabIndex}
+          onChange={handleTabChange}
           variant="scrollable"
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
